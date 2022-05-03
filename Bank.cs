@@ -70,7 +70,7 @@ namespace In2
             Customer customer = GetCustomer(PersonalNumber);
             customerInfo.Add(customer.firstName);
             customerInfo.Add(customer.personalNumber);
-            foreach (account in customer.customerAccounts)
+            foreach (int account in customer.customerAccounts)
             {
                 customerInfo.Add(account);
             }
