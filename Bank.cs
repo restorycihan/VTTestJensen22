@@ -1,3 +1,8 @@
+/*
+Klassen Bank ska innehålla en lista med alla kunder.
+Klassen ska innehålla ett antal metoder som hanterar kunder och dess konton.
+*/
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
