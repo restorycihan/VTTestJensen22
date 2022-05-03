@@ -5,6 +5,7 @@ Klassen ska innehålla ett antal metoder som hanterar kunder och dess konton.
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace In2
 {
@@ -15,7 +16,14 @@ namespace In2
         // Läser in text filen och befolkar listan som ska innehålla kunderna.
         public virtual Load()
         {
-
+            customerList = new List<Customer>();
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Public\TestFolder\data.txt");
+            List<string> list = new List<string>();
+            foreach (string line in lines)
+            {
+                list = split.Split(',').ToList();
+                customerList.Add(list);
+            }
         }
 
         // Returnerar bankens alla kunder (personnummer och namn).
