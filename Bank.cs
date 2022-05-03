@@ -73,7 +73,7 @@ namespace In2
             customerInfo.Add(customer.personalNumber);
             foreach (int account in customer.customerAccounts)
             {
-                customerInfo.Add(account);
+                customerInfo.Add(account.ToString());
             }
             return customerInfo;
         }
