@@ -50,7 +50,7 @@ namespace In2
 
         public virtual Customer GetCustomer(string PersonalNumber)
         {
-            Customer customer = new Customer();
+            Customer customer = null;
             foreach (Customer customer in this.customerList)
             {
                 if (customer.personalNumber == PersonalNumber)
