@@ -29,7 +29,7 @@ namespace In2
         }
 
         // Returnerar bankens alla kunder (personnummer och namn).
-        public virtual IList<T> GetCustomers()
+        public virtual List<Customer> GetCustomers()
         {
             return this.customerList;
         }
@@ -65,7 +65,7 @@ namespace In2
         /*
         Returnerar information om kunden inklusive dennes konton. Första platsen i listan är förslagsvis reserverad för kundens namn och personnummer sedan följer informationen om kundens konton.
         */
-        public virtual IList<T> GetCustomerInfo(string PersonalNumber)
+        public virtual List<string> GetCustomerInfo(string PersonalNumber)
         {
             List<string> customerInfo = new List<string>();
             Customer customer = GetCustomer(PersonalNumber);
