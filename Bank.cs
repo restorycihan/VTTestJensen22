@@ -6,6 +6,8 @@ Klassen ska innehålla ett antal metoder som hanterar kunder och dess konton.
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Customer;
+using Account;
 
 namespace In2
 {
@@ -21,8 +23,8 @@ namespace In2
             List<string> list = new List<string>();
             foreach (string line in lines)
             {
-                list = split.Split(',').ToList();
-                customerList.Add(list);
+                list = split.Split(':').ToList();
+                AddCustomer(list[1], list[2]);
             }
         }
 
@@ -40,15 +42,40 @@ namespace In2
         public virtual bool AddCustomer(string Name, string PersonalNumber)
         {
             bool successfull = false;
+            Customer cust = new Customer();
+            cust.firstName = Name;
+            cust.personalNumber = PersonalNumber;
+            this.customerList.Add(cust);
             return successfull;
+        }
+
+        public virtual Customer GetCustomer(string PersonalNumber)
+        {
+            Customer customer = new Customer();
+            foreach (Customer customer in this.customerList)
+            {
+                if (customer.personalNumber == PersonalNumber)
+                {
+                    break;
+                }
+            }
+            return customer;
         }
 
         /*
         Returnerar information om kunden inklusive dennes konton. Första platsen i listan är förslagsvis reserverad för kundens namn och personnummer sedan följer informationen om kundens konton.
         */
-        public virtual GetCustomer(string PersonalNumber)
+        public virtual IList<T> GetCustomerInfo(string PersonalNumber)
         {
-            return listOfCustomerDetails;
+            List<string> customerInfo = new List<string>();
+            Customer customer = GetCustomer(PersonalNumber);
+            customerInfo.Add(customer.firstName);
+            customerInfo.Add(customer.personalNumber);
+            foreach (account in customer.customerAccounts)
+            {
+                customerInfo.Add(account);
+            }
+            return customerInfo;
         }
 
         /*
@@ -57,6 +84,7 @@ namespace In2
         public virtual bool ChangeCustomerName(string Name, string PersonalNumber)
         {
             bool successfull = false;
+
             return successfull;
         }
 
