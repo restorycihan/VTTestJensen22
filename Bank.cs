@@ -16,14 +16,14 @@ namespace In2
         List<Customer> customerList;
 
         // Läser in text filen och befolkar listan som ska innehålla kunderna.
-        public virtual Load()
+        public virtual void Load()
         {
             customerList = new List<Customer>();
             string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Public\TestFolder\data.txt");
             List<string> list = new List<string>();
             foreach (string line in lines)
             {
-                list = split.Split(':').ToList();
+                list = line.Split(':').ToList();
                 AddCustomer(list[1], list[2]);
             }
         }
@@ -51,10 +51,11 @@ namespace In2
         public virtual Customer GetCustomer(string PersonalNumber)
         {
             Customer customer = null;
-            foreach (Customer customer in this.customerList)
+            foreach (Customer aCustomer in this.customerList)
             {
                 if (customer.personalNumber == PersonalNumber)
                 {
+                    customer = aCustomer;
                     break;
                 }
             }
@@ -90,7 +91,7 @@ namespace In2
         /*
         Tar bort kund med personnumret som angetts ur banken, alla kundens eventuella konton tas också bort och resultatet returneras. Listan som returneras ska innehålla information om alla konton som togs bort, saldot som kunden får tillbaka.
         */
-        public virtual RemoveCustomer(string PersonalNumber)
+        public virtual void RemoveCustomer(string PersonalNumber)
         {
 
         }
@@ -109,10 +110,16 @@ namespace In2
             return accountCode;
         }
 
+        public virtual Account GetAccount(string PersonalNumber, int AccountId)
+        {
+            string accountDetails = "";
+            return accountDetails;
+        }
+
         /*
         Returnerar Textuell presentation av kontot med kontonummer som tillhör kunden (kontonummer, saldo, kontotyp).
         */
-        public virtual GetAccount(string PersonalNumber, int AccountId)
+        public virtual string GetAccountInfo(string PersonalNumber, int AccountId)
         {
             string accountDetails = "";
             return accountDetails;
